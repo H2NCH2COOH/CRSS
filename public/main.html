@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Custom RSS</title>
+  <script>
+    function reg()
+    {
+      var text=document.getElementById("uname");
+      var result=document.getElementById("result");
+      var str;
+      if(text.value)
+      {
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.open("PUT","/crss/"+text.value,false);
+        xmlhttp.send();
+        str=xmlhttp.responseText;
+      }
+      else
+      {
+        str="Please enter an user name";
+      }
+      result.innerHTML=str;
+    }
+  </script>
+</head>
+<body>
+  <h1>Custom RSS</h1>
+  <h2>Create custom RSS feed that is updated with HTTP POST</h2>
+  <p>
+    POST with "body" parameter as the new feed content<br />
+    And optional "title" parameter as the title<br />
+    And optional "link" parameter as the link
+  </p>
+  Register new feed:
+  <input type="text" id="uname"/>
+  <button onClick="reg()">Create!</button>
+  <p id="result"></p>
+</body>
+</html>
